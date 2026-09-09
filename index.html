@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My CV</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            color: #222;
+            line-height: 1.5;
+        }
+
+        .cv {
+            width: 800px;
+            max-width: 95%;
+            margin: 30px auto;
+            background: white;
+            padding: 35px 45px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.12);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h3 {
+            color: #555;
+            margin: 4px 0;
+            font-weight: normal;
+        }
+
+        .contact {
+            font-size: 14px;
+            color: #444;
+        }
+
+        section {
+            margin-bottom: 18px;
+        }
+
+        section h2 {
+            font-size: 17px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        section p,
+        section li {
+            font-size: 14px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill {
+            background: #eeeeee;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .project p {
+            margin-top: 3px;
+        }
+
+        .education {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 8px 20px;
+            border: none;
+            background: #222;
+            color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .print-btn:hover {
+            background: #444;
+        }
+
+        @media (max-width: 600px) {
+            .cv {
+                padding: 25px 20px;
+                margin: 10px auto;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .education {
+                display: block;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .cv {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cv">
+
+    <header>
+        <h1>Your Name</h1>
+        <h3>Web Developer | Fresher</h3>
+        <div class="contact">
+            📞 +91 9056472519 &nbsp; | &nbsp;
+            ✉️ ggnkaur1114@gmail.com &nbsp; | &nbsp;
+            📍 Punjab, India
+        </div>
+    </header>
+
+    <section>
+        <h2>Career Objective</h2>
+        <p>
+            Motivated Web Developer fresher with knowledge of HTML, CSS,
+            JavaScript and MySQL. Seeking an opportunity to start my career,
+            improve my technical skills and contribute to a professional team.
+        </p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">Responsive Design</span>
+        </div>
+    </section>
+
+    <section class="project">
+        <h2>Project</h2>
+
+        <p class="project-title">Job Portal</p>
+        <p>
+            Developed a basic Job Portal application using HTML, CSS,
+            JavaScript and MySQL. Implemented job listings, user registration,
+            login and job search functionality with a simple responsive design.
+        </p>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="education">
+            <div>
+                <strong>MCA</strong><br>
+                Gurur nanak dev engineering collage
+            </div>
+            <div>
+                2024 - 2026
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Experience</h2>
+        <p>
+            <strong>Fresher</strong> — No professional experience.
+            Eager to learn, develop new skills and work in a professional
+            environment.
+        </p>
+    </section>
+
+    <section>
+        <h2>Personal Details</h2>
+        <ul>
+            <li>Languages: English, Hindi, Punjabi</li>
+            <li>Location: Punjab, India</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Declaration</h2>
+        <p>
+            I hereby declare that the information provided above is true
+            to the best of my knowledge.
+        </p>
+    </section>
+
+    <button class="print-btn" onclick="printCV()">Print / Save PDF</button>
+
+</div>
+
+<script>
+    function printCV() {
+        window.print();
+    }
+</script>
+
+</body>
+</html>
