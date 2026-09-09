@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pricing Plans</title>
+
+    <style>
+        /* =========================
+           CSS
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Main Section */
+        .pricing-section {
+            padding: 80px 6%;
+            text-align: center;
+        }
+
+        .pricing-section h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .pricing-section h1 span {
+            color: #38bdf8;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        /* Toggle */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .toggle-label {
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        .toggle {
+            position: relative;
+            width: 55px;
+            height: 28px;
+            background: #334155;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .toggle::before {
+            content: "";
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 4px;
+            transition: 0.3s;
+        }
+
+        .toggle.active {
+            background: #38bdf8;
+        }
+
+        .toggle.active::before {
+            transform: translateX(25px);
+        }
+
+        .save {
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        /* Cards Container */
+        .pricing-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Card */
+        .card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 30px;
+
+            text-align: left;
+
+            backdrop-filter: blur(15px);
+
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: #38bdf8;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Popular Card */
+        .popular {
+            border: 2px solid #38bdf8;
+            transform: scale(1.04);
+        }
+
+        .popular:hover {
+            transform: scale(1.04) translateY(-12px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+
+            padding: 7px 20px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* Card Heading */
+        .card h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #94a3b8;
+            min-height: 45px;
+            line-height: 1.5;
+        }
+
+        /* Price */
+        .price {
+            margin: 25px 0;
+        }
+
+        .price span {
+            font-size: 48px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .price small {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        /* Features */
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            margin: 15px 0;
+            color: #e2e8f0;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #4ade80;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Button */
+        .card-btn {
+            display: block;
+            width: 100%;
+
+            padding: 13px;
+
+            text-align: center;
+            text-decoration: none;
+
+            border: 1px solid #38bdf8;
+            border-radius: 10px;
+
+            color: #38bdf8;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .card-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .popular .card-btn {
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            border: none;
+            color: white;
+        }
+
+        .popular .card-btn:hover {
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+
+            .pricing-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .popular {
+                transform: scale(1);
+            }
+
+            .popular:hover {
+                transform: translateY(-12px);
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .pricing-section {
+                padding: 60px 20px;
+            }
+
+            .pricing-section h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .card {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HTML
+    ========================== -->
+
+    <section class="pricing-section">
+
+        <h1>Choose Your <span>Plan</span></h1>
+
+        <p class="subtitle">
+            Simple and transparent pricing for everyone.
+        </p>
+
+        <!-- Billing Toggle -->
+        <div class="toggle-container">
+
+            <span class="toggle-label">Monthly</span>
+
+            <div class="toggle" id="billingToggle"></div>
+
+            <span class="toggle-label">Yearly</span>
+
+            <span class="save">Save 20%</span>
+
+        </div>
+
+
+        <!-- Pricing Cards -->
+        <div class="pricing-container">
+
+            <!-- Basic -->
+            <div class="card">
+
+                <h2>Basic</h2>
+
+                <p class="card-description">
+                    Perfect for individuals getting started.
+                </p>
+
+                <div class="price">
+                    $<span class="price-value" data-monthly="9" data-yearly="7">9</span>
+                    <small>/month</small>
+                </div>
+
+                <ul class="features">
+                    <li>5 Projects</li>
+                    <li>10 GB Storage</li>
+                    <li>Email Support</li>
+                    <li>Basic Analytics</li>
+                    <li>Community Access</li>
+                </ul>
+
+                <a href="#" class="card-btn">
+                    Get Started
+                </a>
+
+            </div>
+
+
+            <!-- Professional -->
+            <div class="card popular">
+
+                <div class="popular-badge">
+                    MOST POPULAR
+                </div>
+
+                <h2>Professional</h2>
+
+                <p class="card-description">
+                    Best choice for growing businesses.
+                </p>
+
+                <div class="price">
+                    $<span class="price-value" data-monthly="19" data-yearly="15">19</span>
+                    <small>/month</small>
+                </div>
+
+                <ul class="features">
+                    <li>Unlimited Projects</li>
+                    <li>100 GB Storage</li>
+                    <li>Priority Support</li>
+                    <li>Advanced Analytics</li>
+                    <li>Team Collaboration</li>
+                </ul>
+
+                <a href="#" class="card-btn">
+                    Choose Plan
+                </a>
+
+            </div>
+
+
+            <!-- Premium -->
+            <div class="card">
+
+                <h2>Premium</h2>
+
+                <p class="card-description">
+                    Advanced features for large teams.
+                </p>
+
+                <div class="price">
+                    $<span class="price-value" data-monthly="39" data-yearly="31">39</span>
+                    <small>/month</small>
+                </div>
+
+                <ul class="features">
+                    <li>Unlimited Everything</li>
+                    <li>500 GB Storage</li>
+                    <li>24/7 Support</li>
+                    <li>Premium Analytics</li>
+                    <li>Dedicated Manager</li>
+                </ul>
+
+                <a href="#" class="card-btn">
+                    Go Premium
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const toggle = document.getElementById("billingToggle");
+
+        const prices = document.querySelectorAll(".price-value");
+
+        toggle.addEventListener("click", function () {
+
+            toggle.classList.toggle("active");
+
+            const yearly = toggle.classList.contains("active");
+
+            prices.forEach(function (price) {
+
+                if (yearly) {
+                    price.textContent = price.dataset.yearly;
+                } else {
+                    price.textContent = price.dataset.monthly;
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
